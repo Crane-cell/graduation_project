@@ -1,0 +1,69 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="950" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="2" value="研究者" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
+      <mxGeometry x="80" y="320" width="40" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="3" value="训练调度器（系统）" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
+      <mxGeometry x="1050" y="360" width="40" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="4" value="足球仿真环境（自研组件，PettingZoo API 兼容）" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="520" y="800" width="40" height="80" as="geometry" />
+    </mxCell>
+    <mxCell id="5" value="仿真机器人足球协作系统" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#F5F9FF;strokeColor=#6699FF;dashed=1;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="240" y="60" width="680" height="680" as="geometry" />
+    </mxCell>
+    <mxCell id="6" value="启动训练（F09）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="300" y="120" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="7" value="加载配置（F05）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="620" y="120" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="8" value="执行采集-更新循环" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="300" y="280" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="9" value="推进仿真环境" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="300" y="440" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="10" value="保存检查点（F10）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="300" y="590" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="11" value="对抗评估（F13）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="620" y="280" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="12" value="训练曲线可视化（F18）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="620" y="440" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="13" value="消融实验（F17）" style="ellipse;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="620" y="590" width="180" height="70" as="geometry" />
+    </mxCell>
+    <mxCell id="14" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="2" target="6">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="15" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="2" target="11">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="16" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="2" target="13">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="17" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="2" target="12">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="18" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="3" target="8">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="19" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="3" target="10">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="20" value="&lt;&lt;include&gt;&gt;" style="html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#9673A6;fontSize=11;" edge="1" parent="1" source="6" target="7">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="21" value="&lt;&lt;include&gt;&gt;" style="html=1;dashed=1;endArrow=open;endFill=0;strokeColor=#9673A6;fontSize=11;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="8" target="9">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="22" style="html=1;endArrow=none;strokeColor=#666666;" edge="1" parent="1" source="9" target="4">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

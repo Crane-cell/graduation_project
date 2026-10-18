@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# 虚拟环境（实际位于仓库外层 F:\A_YZY\AProject\venv，防御性忽略）
+venv/
+.venv/
+
+# 模型权重等大文件不入库（实验结论以曲线/表格形式入库）
+*.pt
+*.pth
+*.ckpt
+runs/
+
+# 日志
+*.log
+
+# IDE
+.idea/
+.vscode/
+
+# 本机一键启动入口（个人环境文件，不入库）
+run_visualize.bat
+run_visualize_silent.vbs
+
+# 系统
+Thumbs.db
+.DS_Store

@@ -1,0 +1,63 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1240" pageHeight="960" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="2" value="BaseAlgo «契约基类»&#10;──────────────&#10;num_agents / obs_dim / action_dim / config&#10;+ select_action(agent_id, obs) &#8594; int&#10;+ update(batch) &#8594; dict[str, float]&#10;+ save(path) / load(path)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFE6CC;strokeColor=#D79B00;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="450" y="40" width="340" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="3" value="MADDPG «F07»&#10;──────────────&#10;覆写 select_action / update&#10;（Day05 实现：集中评论家+分散演员）" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFE6CC;strokeColor=#D79B00;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="40" y="230" width="330" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="4" value="QMIX «F08»&#10;──────────────&#10;覆写 select_action / update&#10;（Day05 实现：个体Q+单调混合网络）" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFE6CC;strokeColor=#D79B00;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="450" y="230" width="330" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="5" value="IQL «F12 基线»&#10;──────────────&#10;覆写 select_action / update&#10;（Day05 实现：独立学习对照）" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFE6CC;strokeColor=#D79B00;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="870" y="230" width="330" height="90" as="geometry" />
+    </mxCell>
+    <mxCell id="6" value="Transition «dataclass»&#10;──────────────&#10;obs: dict&#10;actions: dict&#10;rewards: dict&#10;next_obs: dict&#10;terminated: dict&#10;（全队联合转移，CTDE 训练单元）" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFF2CC;strokeColor=#D6B656;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="40" y="420" width="330" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="7" value="ReplayBuffer&#10;──────────────&#10;- _buf: deque[Transition]&#10;+ add(transition)&#10;+ sample(batch_size, rng) &#8594; list&#10;+ __len__()" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#FFF2CC;strokeColor=#D6B656;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="450" y="420" width="330" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="8" value="SoccerEnv «ParallelEnv»&#10;──────────────&#10;possible_agents: list[str]&#10;+ reset(seed) &#8594; (obs, infos)&#10;+ step(actions) &#8594; 五元组&#10;+ observation_space(a) / action_space(a)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#D5E8D4;strokeColor=#82B366;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="870" y="420" width="330" height="130" as="geometry" />
+    </mxCell>
+    <mxCell id="9" value="Role «IntEnum F11»&#10;──────────────&#10;FORWARD / MIDFIELDER / DEFENDER&#10;+ assign_roles(n) &#8594; list[Role]&#10;+ role_onehot(role) &#8594; ndarray" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#E1D5E7;strokeColor=#9673A6;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="870" y="640" width="330" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="10" value="Trainer «F09»&#10;──────────────&#10;- env / algo / buffer / logger（构造注入）&#10;- _global_step&#10;+ train() &#8594; dict&#10;（collect 与 update 双循环；局末重置；周期存档）" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#DAE8FC;strokeColor=#6C8EBF;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="150" y="640" width="400" height="120" as="geometry" />
+    </mxCell>
+    <mxCell id="11" value="Evaluator «F13»&#10;──────────────&#10;+ evaluate(env, algo, n_episodes)&#10;  &#8594; win_rate / goal_diff&#10;  / team_reward / inference_ms_p50" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontSize=12;fillColor=#DAE8FC;strokeColor=#6C8EBF;align=left;spacingLeft=8;spacingTop=4" vertex="1" parent="1">
+      <mxGeometry x="150" y="820" width="400" height="110" as="geometry" />
+    </mxCell>
+    <mxCell id="12" style="html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.25;entryY=1;" edge="1" parent="1" source="3" target="2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="13" style="html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="4" target="2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="14" style="html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="5" target="2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="15" value="只依赖契约（面向接口）" style="html=1;dashed=1;endArrow=open;exitX=0.5;exitY=0.25;entryX=0.5;entryY=0.75;" edge="1" parent="1" source="10" target="2">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="16" value="- buffer" style="html=1;endArrow=diamond;endFill=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="10" target="7">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="17" value="- env" style="html=1;endArrow=diamond;endFill=1;exitX=0.85;exitY=0;entryX=0.15;entryY=1;" edge="1" parent="1" source="10" target="8">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="18" value="存储" style="html=1;dashed=1;endArrow=open;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="7" target="6">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="19" value="角色独热入观测" style="html=1;dashed=1;endArrow=open;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="9" target="8">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="20" value="调度评估" style="html=1;dashed=1;endArrow=open;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="10" target="11">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

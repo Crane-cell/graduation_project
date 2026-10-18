@@ -1,0 +1,49 @@
+# 仿真机器人足球协作系统——默认配置（F05）
+# 维度与物理参数已在 Day04 LLD 定稿（docs/LLD-详细设计说明书.md）；
+# Day07 数据驱动：load_config 会校验类型/范围、兜底缺失字段、告警未知字段。
+# 与 src/utils/config.py 的 DEFAULTS 保持同源口径（改两处需同步）。
+
+env:
+  num_per_side: 3          # 3v3 起步（课程式策略：先小后大，开题 5.1）
+  obs_dim: 32              # 观测维度（LLD 第 3 章布局）
+  action_dim: 10            # 离散动作数（0-7 移动 / 8 踢球 / 9 原地，LLD 第 2 章）
+  max_episode_steps: 500    # 一局步数上限（进球或 500 步终局）
+  goal_half_width: 2.0      # 球门半高（门高 4.0m）
+  field:
+    width: 20.0            # 场地宽（米）
+    height: 15.0           # 场地高（米）
+  reward:                  # LLD 第 4 章奖励表（权重全部外置可调）
+    goal: 10.0             # 进球（团队稀疏）
+    control: 0.02          # 控球塑形
+    advance: 0.5           # 球向对方门位移塑形
+    approach: 0.005        # 跑向球塑形
+
+algorithm:
+  name: maddpg             # maddpg | qmix | iql 一键切换（同接口公平对比，F06/F12/F13）
+  gamma: 0.99              # 折扣因子
+  lr: 0.001                # 学习率
+  batch_size: 32           # 每次更新采样批大小
+  buffer_size: 100000      # 经验回放容量
+  update_start: 1000       # buffer 攒够该步数后开始网络更新
+  update_every: 4          # 每采集 N 步触发一次更新
+  hidden_dim: 64           # MLP 隐藏层宽度（LLD 第 5 章）
+  embed_dim: 32            # QMIX 混合网络嵌入维度
+  tau_soft: 0.01           # 目标网络软更新系数
+  epsilon: 0.1             # ε-greedy 探索（执行期）
+  ablation:                # 消融开关（开题 5.4 实验设计：同一代码按开关剪枝组件）
+    communication: false   # 有限通信机制（预留，M3 后启用）
+    role_assignment: true  # 角色分工（前锋/中场/后卫）
+    value_decomposition: true  # 值函数分解（QMIX 关掉退化为独立 Q）
+
+train:
+  total_steps: 100000      # 总训练步数
+  eval_interval: 10000     # 评估触发间隔（步）
+  checkpoint_interval: 5000  # 存档触发间隔（步）
+  seed: 42                 # 全局随机种子（NF-02 可复现）
+
+eval:
+  n_episodes: 1000         # 固定测试对局数（NF-03；具体口径待 Q5 导师确认）
+  seed: 2026               # 评估种子（固定对局集可复现）
+
+logging:
+  log_dir: runs            # TensorBoard 日志目录（已入 .gitignore）

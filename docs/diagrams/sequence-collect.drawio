@@ -1,0 +1,90 @@
+<mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1240" pageHeight="680" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="2" value="Trainer（F09）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#DAE8FC;strokeColor=#6C8EBF;" vertex="1" parent="1">
+      <mxGeometry x="80" y="40" width="200" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="3" value="BaseAlgo 算法契约（F06）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFE6CC;strokeColor=#D79B00;" vertex="1" parent="1">
+      <mxGeometry x="420" y="40" width="200" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="4" value="SoccerEnv（F01）" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#D5E8D4;strokeColor=#82B366;" vertex="1" parent="1">
+      <mxGeometry x="760" y="40" width="200" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="5" value="ReplayBuffer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF2CC;strokeColor=#D6B656;" vertex="1" parent="1">
+      <mxGeometry x="1000" y="40" width="200" height="40" as="geometry" />
+    </mxCell>
+    <mxCell id="6" style="html=1;dashed=1;endArrow=none;strokeColor=#999999;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="180" y="80" as="sourcePoint" />
+        <mxPoint x="180" y="600" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="7" style="html=1;dashed=1;endArrow=none;strokeColor=#999999;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="520" y="80" as="sourcePoint" />
+        <mxPoint x="520" y="600" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="8" style="html=1;dashed=1;endArrow=none;strokeColor=#999999;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="860" y="80" as="sourcePoint" />
+        <mxPoint x="860" y="600" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="9" style="html=1;dashed=1;endArrow=none;strokeColor=#999999;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="1100" y="80" as="sourcePoint" />
+        <mxPoint x="1100" y="600" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="10" value="1. select_action(a_id, obs) ×N 个智能体" style="html=1;endArrow=open;exitX=1;exitY=0.5;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="180" y="150" as="sourcePoint" />
+        <mxPoint x="520" y="150" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="11" value="action: int" style="html=1;dashed=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="520" y="185" as="sourcePoint" />
+        <mxPoint x="180" y="185" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="12" value="2. step(actions)" style="html=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="180" y="240" as="sourcePoint" />
+        <mxPoint x="860" y="240" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="13" value="obs&#8242; / rewards / terms / truncs / infos" style="html=1;dashed=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="860" y="280" as="sourcePoint" />
+        <mxPoint x="180" y="280" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="14" value="3. add(Transition(obs, actions, rewards, next_obs, terminated))" style="html=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="180" y="330" as="sourcePoint" />
+        <mxPoint x="1100" y="330" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="15" value="alt [episode 结束：all(terms) or all(truncs) or not env.agents]" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=none;strokeColor=#9673A6;verticalAlign=top;fontSize=11;fontColor=#9673A6;align=left;spacingLeft=8;" vertex="1" parent="1">
+      <mxGeometry x="60" y="370" width="1140" height="140" as="geometry" />
+    </mxCell>
+    <mxCell id="16" value="4. reset()" style="html=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="180" y="440" as="sourcePoint" />
+        <mxPoint x="860" y="440" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="17" value="obs&#8320;, infos" style="html=1;dashed=1;endArrow=open;" edge="1" parent="1">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="860" y="480" as="sourcePoint" />
+        <mxPoint x="180" y="480" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="18" value="对应代码：src/training/trainer.py Trainer.train() 采集分支——骨架冒烟已真实跑通本链路（SKELETON_SMOKE_OK，2026-10-18）" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="60" y="540" width="1140" height="30" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>

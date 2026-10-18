@@ -1,0 +1,13 @@
+# 运行必需
+torch>=2.0
+pettingzoo>=1.24
+gymnasium>=0.29
+numpy>=1.24
+pyyaml>=6.0
+matplotlib>=3.7
+
+# 开发与实验工具
+pytest>=7.0
+pytest-cov>=4.0
+tensorboard>=2.14
+debugpy>=1.8
